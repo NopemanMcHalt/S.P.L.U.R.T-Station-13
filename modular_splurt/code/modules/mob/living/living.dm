@@ -3,22 +3,23 @@
 
 /// Gender Change
 // Intended only for silicons/robots (incl. pAI) and simple_animal code so far. This proc was made to somewhat ease up duplicated verb code.
-/mob/living/proc/change_gender()
+// There's probably better way to do this but I am terrible at it --Nopeman
+/mob/living/proc/change_genitals()
 	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
+		to_chat(usr, "<span class='warning'>You cannot change your genitals/gender while unconcious!</span>")
 		return
 
-	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female", "None", "Toggle Breasts"))
+	var/choice = tgui_alert(usr, "Adjust your junk.", "Genitals", list("Both", "Male Set", "Female Set", "None", "Toggle Breasts", "Change Gender"))
 	switch(choice)
 		if("Both")
 			has_penis = TRUE
 			has_balls = TRUE
 			has_vagina = TRUE
-		if("Male")
+		if("Male Set")
 			has_penis = TRUE
 			has_balls = TRUE
 			has_vagina = FALSE
-		if("Female")
+		if("Female Set")
 			has_penis = FALSE
 			has_balls = FALSE
 			has_vagina = TRUE
@@ -28,6 +29,8 @@
 			has_vagina = FALSE
 		if("Toggle Breasts") // Idea/Initial code by @LunarFleet (github)
 			has_breasts = !has_breasts // Simplified line by @Zirok-BYOND (github)
+		if("Change Gender")
+			gender = input(usr, "Change your gender.", "Gender", gender) in list(MALE, FEMALE, PLURAL, NEUTER)
 
 /// Toggle admin frozen
 /mob/living/proc/toggle_admin_freeze(client/admin)

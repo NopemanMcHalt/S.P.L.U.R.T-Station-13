@@ -5,7 +5,7 @@
 	set name = "Set Gender"
 	set desc = "Allows you to set your gender."
 	set category = "Robot Commands"
-	change_gender()
+	change_genitals()
 
 // Slaver medical borg
 /mob/living/silicon/robot/modules/syndicate/slaver/medical
